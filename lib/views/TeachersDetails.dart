@@ -175,7 +175,7 @@ class TeachersDetailsState extends State<TeachersDetails> {
                                                         SizedBox(
                                                           height: 8,
                                                         ),
-                                                        Expanded(flex: 1, child: Text(listCourse[index].courseName, style: TextStyle(fontSize: 16, color: theme == Constants.lightTheme ? Colors.black : Colors.white, fontWeight: FontWeight.w600)))
+                                                        Expanded(flex: 1, child: Text(listCourse[index].courseName, style: TextStyle(fontSize: 16, color: theme == Constants.lightTheme ? Colors.black : Colors.white, fontWeight: FontWeight.w500)))
                                                       ],
                                                     ),
                                                   ),
@@ -273,7 +273,7 @@ class TeachersDetailsState extends State<TeachersDetails> {
                                                     SizedBox(
                                                       height: 8,
                                                     ),
-                                                    Expanded(flex: 1, child: Text(listCourse[index].courseName, style: TextStyle(fontSize: 16, color: theme == Constants.lightTheme ? Colors.black : Colors.white, fontWeight: FontWeight.w600)))
+                                                    Expanded(flex: 1, child: Text(listCourse[index].courseName, style: TextStyle(fontSize: 16, color: theme == Constants.lightTheme ? Colors.black : Colors.white, fontWeight: FontWeight.w500)))
                                                   ],
                                                 ),
                                               ),
@@ -372,7 +372,7 @@ class TeachersDetailsState extends State<TeachersDetails> {
                                                       SizedBox(
                                                         height: 8,
                                                       ),
-                                                      Expanded(flex: 1, child: Text(listCourse[index].courseName, style: TextStyle(fontSize: 16, color: theme == Constants.lightTheme ? Colors.black : Colors.white, fontWeight: FontWeight.w600)))
+                                                      Expanded(flex: 1, child: Text(listCourse[index].courseName, style: TextStyle(fontSize: 16, color: theme == Constants.lightTheme ? Colors.black : Colors.white, fontWeight: FontWeight.w500)))
                                                     ],
                                                   ),
                                                 ),
@@ -463,7 +463,7 @@ class TeachersDetailsState extends State<TeachersDetails> {
                                                     SizedBox(
                                                       height: 8,
                                                     ),
-                                                    Expanded(flex: 1, child: Text(listCourse[index].courseName, style: TextStyle(fontSize: 16, color: theme == Constants.lightTheme ? Colors.black : Colors.white, fontWeight: FontWeight.w600)))
+                                                    Expanded(flex: 1, child: Text(listCourse[index].courseName, style: TextStyle(fontSize: 16, color: theme == Constants.lightTheme ? Colors.black : Colors.white, fontWeight: FontWeight.w500)))
                                                   ],
                                                 ),
                                               ),
@@ -484,80 +484,7 @@ class TeachersDetailsState extends State<TeachersDetails> {
                   }
                 }
               },
-            )
-            /*FutureBuilder(
-                future: futureCourse,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData == false) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else {
-                    print("RESSSS ${snapshot.data}");
-                    listCourse = CourseListModel.fromJson(snapshot.data).courseList;
-                    if (listCourse != null) {
-                      return Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: listCourse.length > 0
-                                  ? ListView.builder(
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount: (listCourse.length),
-                                      itemBuilder: (context, index) {
-                                        Duration durationDiff = DateTime.parse(listCourse[index].startDate).difference(DateTime.parse(listCourse[0].endDate));
-                                        int days = DateTime.now().difference(DateTime.parse(listCourse[index].endDate)).inDays;
-                                        return durationDiff < Duration(hours: 24)
-                                            ? GestureDetector(
-                                                onTap: () {
-                                                  listCourse[index].planName != "" ? Get.to(ClassesOrCoursesScreen) : Get.to(SubscriptionPage());
-                                                },
-                                                child: Container(
-                                                  width: 140,
-                                                  margin: EdgeInsets.only(left: 10),
-                                                  height: 100,
-                                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0), border: Border.all(width: 1, color: Colors.black12)),
-                                                  child: Column(
-                                                    children: [
-                                                      Expanded(
-                                                          flex: 3,
-                                                          child: Image.asset(
-                                                            'assets/images/teachers.jpg',
-                                                            //height: 90,
-                                                            fit: BoxFit.contain,
-                                                            width: 120,
-                                                          )),
-                                                      Container(
-                                                        height: 1,
-                                                        color: Colors.black12,
-                                                      ),
-                                                      SizedBox(
-                                                        height: 8,
-                                                      ),
-                                                      Expanded(flex: 1, child: Text(listCourse[index].courseName, style: TextStyle(fontSize: 16, color: theme == Constants.lightTheme ? Colors.black : Colors.white, fontWeight: FontWeight.w600)))
-                                                    ],
-                                                  ),
-                                                ),
-                                              )
-                                            : Container();
-                                      })
-                                  : Center(
-                                      child: Text('No data'),
-                                    ),
-                            ),
-                          ],
-                        ),
-                      );
-                    } else {
-                      return Center(
-                        child: Utils.noData,
-                      );
-                    }
-                  }
-                })*/
-            ,
+            ),
           ),
         ],
       ),

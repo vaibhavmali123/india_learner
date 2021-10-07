@@ -137,6 +137,7 @@ class PlusCoursesScreenState extends State<PlusCoursesScreen> {
             List<CourseList> listCourse = snapshot.data;
             return isAvailable != false
                 ? Container(
+                    margin: EdgeInsets.only(top: 10, left: 10, right: 5),
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
                     child: listCourse != null
@@ -148,7 +149,9 @@ class PlusCoursesScreenState extends State<PlusCoursesScreen> {
                               }
                               return GestureDetector(
                                 onTap: () async {
-                                  Get.to(FreeLiveClassListScreen());
+                                  Get.to(FreeLiveClassListScreen(
+                                    courseId: listCourse[index].courseId,
+                                  ));
                                   // Get.to(CourseListWidget());
                                 },
                                 child: listCourse[index].isFree == '2'
@@ -176,22 +179,45 @@ class PlusCoursesScreenState extends State<PlusCoursesScreen> {
                                                       )),
                                                   Expanded(
                                                       flex: 5,
-                                                      child: Column(
-                                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                                        mainAxisAlignment: MainAxisAlignment.center,
-                                                        children: [
-                                                          Text(
-                                                            listCourse[index].courseName,
-                                                            style: TextStyle(fontSize: 14, height: 1.3, color: Colors.black, fontWeight: FontWeight.w600),
-                                                          ),
-                                                          SizedBox(
-                                                            height: 5,
-                                                          ),
-                                                          Text(
-                                                            'Duration ' + listCourse[index].startDate + ' To ' + listCourse[index].endDate,
-                                                            style: TextStyle(fontSize: 14, height: 1.3, color: Colors.black, fontWeight: FontWeight.w600),
-                                                          )
-                                                        ],
+                                                      child: Padding(
+                                                        padding: EdgeInsets.only(left: 12),
+                                                        child: Column(
+                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                          children: [
+                                                            Text(
+                                                              listCourse[index].courseName,
+                                                              style: TextStyle(fontSize: 14, height: 1.3, color: Colors.black, fontWeight: FontWeight.w600),
+                                                            ),
+                                                            SizedBox(
+                                                              height: 6,
+                                                            ),
+                                                            Text.rich(TextSpan(
+                                                                text: 'Duration:  ',
+                                                                style: TextStyle(
+                                                                  fontSize: 13,
+                                                                  color: Colors.black87,
+                                                                  fontWeight: FontWeight.bold,
+                                                                ),
+                                                                children: <InlineSpan>[
+                                                                  TextSpan(
+                                                                    text: listCourse[index].startDate + ' To ' + listCourse[index].endDate,
+                                                                    style: TextStyle(
+                                                                      fontSize: 11,
+                                                                      color: Colors.black.withOpacity(0.6),
+                                                                      fontWeight: FontWeight.bold,
+                                                                    ),
+                                                                  )
+                                                                ])),
+                                                            SizedBox(
+                                                              height: 6,
+                                                            ),
+                                                            Text.rich(TextSpan(
+                                                                text: 'Fees: ',
+                                                                style: TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: Colors.black87),
+                                                                children: <InlineSpan>[TextSpan(text: listCourse[index].courseFee, style: TextStyle(fontSize: 12, color: Colors.black87.withOpacity(0.5), fontWeight: FontWeight.w800))]))
+                                                          ],
+                                                        ),
                                                       )),
                                                   Expanded(
                                                     flex: 1,

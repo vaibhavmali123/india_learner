@@ -1,7 +1,0 @@
-#Tue Oct 05 18:01:13 IST 2021
-base.0=E\:\\projects\\New\\india_learner\\build\\app\\intermediates\\dex\\release\\mergeDexRelease\\out\\classes.dex
-path.1=classes2.dex
-renamed.1=classes2.dex
-path.0=classes.dex
-renamed.0=classes.dex
-base.1=E\:\\projects\\New\\india_learner\\build\\app\\intermediates\\dex\\release\\mergeDexRelease\\out\\classes2.dex

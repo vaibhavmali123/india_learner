@@ -7,6 +7,7 @@ import 'package:india_learner/blocs/LiveSessionHomeBloc.dart';
 import 'package:india_learner/blocs/TeachersBloc.dart';
 import 'package:india_learner/blocs/TopVideosBloc.dart';
 import 'package:india_learner/models/AdvertiseModel.dart';
+import 'package:india_learner/models/ClassesSessionListModel.dart';
 import 'package:india_learner/models/CourseListModel.dart';
 import 'package:india_learner/models/LiveSessionListModel.dart';
 import 'package:india_learner/models/TeacherListModel.dart';
@@ -26,6 +27,7 @@ import 'package:india_learner/views/SavedScreen.dart';
 import 'package:india_learner/views/SchedulePage.dart';
 import 'package:india_learner/views/SubscriptionPage.dart';
 import 'package:india_learner/views/TeachersDetails.dart';
+import 'package:india_learner/views/VideoPlayerWidget.dart';
 
 class HomePageNav extends StatefulWidget {
   HomePageNavState createState() => HomePageNavState();
@@ -377,17 +379,18 @@ class HomePageNavState extends State<HomePageNav> {
                                             height: 2,
                                           ),
                                           Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
                                             children: [
-                                              Text(
+                                              /*Text(
                                                 'Price: ' + listCourse[index].courseFee.toString(),
                                                 style: TextStyle(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.w500,
                                                   color: theme == Constants.lightTheme ? Colors.black : Colors.white,
                                                 ),
-                                              ),
+                                              ),*/
                                               Text(
-                                                '   Duration: ' + listCourse[index].duration.toString(),
+                                                '   Duration: ' + listCourse[index].duration.toString() + ' days',
                                                 style: TextStyle(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.w500,
@@ -518,37 +521,51 @@ class HomePageNavState extends State<HomePageNav> {
                     itemCount: listTopVideos.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.only(right: 10, left: 5, top: 5),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                                flex: 3,
-                                child: Container(
-                                  width: Get.size.width / 3,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    child: Image.asset(
-                                      'assets/images/download.jpg',
-                                      fit: BoxFit.cover,
+                      return GestureDetector(
+                        onTap: () {
+                          VideoList videoList = VideoList();
+                          videoList.video = listTopVideos[index].video;
+                          videoList.categoryId = listTopVideos[index].categoryId;
+                          videoList.subcategoryId = listTopVideos[index].subcategoryId;
+                          videoList.courseName = listTopVideos[index].courseName;
+                          videoList.id = listTopVideos[index].courseId;
+                          videoList.title = listTopVideos[index].title;
+                          videoList.image = listTopVideos[index].image;
+                          print("TOPPP ${listTopVideos[index].video}");
+                          Get.to(VideoPlayerWidget(videoList: videoList));
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(right: 10, left: 5, top: 5),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                  flex: 3,
+                                  child: Container(
+                                    width: Get.size.width / 3,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      child: Image.asset(
+                                        'assets/images/download.jpg',
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
-                                  ),
-                                )),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Expanded(
-                                flex: 1,
-                                child: Text(
-                                  listTopVideos[index].title,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: theme == Constants.lightTheme ? Colors.black : Colors.white,
-                                  ),
-                                )),
-                          ],
+                                  )),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Expanded(
+                                  flex: 1,
+                                  child: Text(
+                                    listTopVideos[index].title,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: theme == Constants.lightTheme ? Colors.black : Colors.white,
+                                    ),
+                                  )),
+                            ],
+                          ),
                         ),
                       );
                     });
