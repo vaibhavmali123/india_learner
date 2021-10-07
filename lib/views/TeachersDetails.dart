@@ -434,7 +434,6 @@ class TeachersDetailsState extends State<TeachersDetails> {
                                     itemBuilder: (context, index) {
                                       Duration durationDiff = DateTime.parse(listCourse[index].startDate).difference(DateTime.parse(listCourse[0].endDate));
                                       int days = DateTime.now().difference(DateTime.parse(listCourse[index].endDate)).inDays;
-                                      print("DIFFRENCE LLL ${listCourse[index].file}");
                                       return days.isNegative == false
                                           ? GestureDetector(
                                               onTap: () {

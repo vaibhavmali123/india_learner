@@ -43,6 +43,9 @@ class PlusCoursesScreenState extends State<PlusCoursesScreen> {
         padding: EdgeInsets.only(top: 40),
         child:
         Row(
+          child: Padding(
+        padding: EdgeInsets.only(top: 40),
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             GestureDetector(
@@ -52,6 +55,11 @@ class PlusCoursesScreenState extends State<PlusCoursesScreen> {
                   courseId: '1',
                   type: Constants.paid,
                 ));*/ /*
+
+                /*Get.to(CourseListWidget(
+                  courseId: '1',
+                  type: Constants.paid,
+                ));*/
               },
               child: Container(
                 height: 120,
@@ -120,7 +128,6 @@ class PlusCoursesScreenState extends State<PlusCoursesScreen> {
           ],
         ),
       )*/
-
               StreamBuilder(
         stream: courseBloc.courseFetcher,
         builder: (context, AsyncSnapshot<List<CourseList>> snapshot) {
