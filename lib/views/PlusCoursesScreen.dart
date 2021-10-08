@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:india_learner/blocs/CourseBloc.dart';
 import 'package:india_learner/models/CourseListModel.dart';
 import 'package:india_learner/utils/Utils.dart';
-import 'package:india_learner/views/FreeLiveClassListScreen.dart';
+import 'package:india_learner/views/PlusCoursesSession.dart';
 
 class PlusCoursesScreen extends StatefulWidget {
   PlusCoursesScreenState createState() => PlusCoursesScreenState();
@@ -149,9 +149,7 @@ class PlusCoursesScreenState extends State<PlusCoursesScreen> {
                               }
                               return GestureDetector(
                                 onTap: () async {
-                                  Get.to(FreeLiveClassListScreen(
-                                    courseId: listCourse[index].courseId,
-                                  ));
+                                  Get.to(PlusCoursesSession());
                                   // Get.to(CourseListWidget());
                                 },
                                 child: listCourse[index].isFree == '2'

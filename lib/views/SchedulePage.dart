@@ -71,10 +71,14 @@ class SchedulePageState extends State<SchedulePage> {
                                         width: 10,
                                       ),
                                       Text(
-                                        scheduleList[index].className[0].className,
-                                        style: TextStyle(fontSize: 15, height: 2, color: Colors.cyan, fontWeight: FontWeight.w700),
+                                        scheduleList[index].courseName,
+                                        style: TextStyle(fontSize: 15, height: 2, color: Colors.black87, fontWeight: FontWeight.w700),
                                       ),
                                     ],
+                                  ),
+                                  Text(
+                                    scheduleList[index].startTime + " To " + scheduleList[index].endTime,
+                                    style: TextStyle(fontSize: 15, height: 2, color: Colors.black87.withOpacity(0.5), fontWeight: FontWeight.w700),
                                   ),
                                   SizedBox(
                                     height: 2,
@@ -91,14 +95,14 @@ class SchedulePageState extends State<SchedulePage> {
                                   ),
                                   Row(
                                     children: [
-                                      Text(
+                                      /*Text(
                                         scheduleList[index].course[0].startDate != null ? scheduleList[index].course[0].startDate : "",
                                         style: TextStyle(fontSize: 14, height: 1.2, color: Colors.black45, fontWeight: FontWeight.w600),
-                                      ),
-                                      Text(
+                                      ),*/
+                                      /*Text(
                                         scheduleList[index].time[0].startTime != null ? scheduleList[index].time[0].startTime : "",
                                         style: TextStyle(fontSize: 14, color: Colors.black45, fontWeight: FontWeight.w400),
-                                      ),
+                                      ),*/
                                     ],
                                   ),
                                   /*Text(

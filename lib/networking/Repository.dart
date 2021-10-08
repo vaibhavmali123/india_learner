@@ -8,6 +8,7 @@ import 'package:india_learner/models/EnrollmentsModel.dart';
 import 'package:india_learner/models/LiveSessionListModel.dart';
 import 'package:india_learner/models/LoginModel.dart';
 import 'package:india_learner/models/PlusCourseModel.dart';
+import 'package:india_learner/models/PlusSessionModel.dart';
 import 'package:india_learner/models/SchedulesModel.dart';
 import 'package:india_learner/models/SignupModel.dart';
 import 'package:india_learner/models/SubtestModel.dart';
@@ -264,6 +265,15 @@ class Repository {
     return ApiHandler.postApi(baseUrl: ApiProvider.baseUrl, endApi: EndApi.sessionListHome, map: obj).then((value) {
       List<LiveList> listSessions = LiveSessionListModel.fromJson(value).liveList;
       return listSessions;
+    });
+  }
+
+  static Future<PlusSessionModel> getPlusSessions() {
+    var request = {"course_id": "3"};
+    return ApiHandler.postApi(baseUrl: ApiProvider.baseUrl, endApi: EndApi.plusSession,map:request).then((value) {
+      PlusSessionModel plusSessionModel = PlusSessionModel.fromJson(value);
+
+      return plusSessionModel;
     });
   }
 }

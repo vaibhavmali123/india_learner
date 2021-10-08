@@ -1,11 +1,11 @@
-class ScheduleList {
+class SchedulesModel {
   String statusCode;
   String message;
   List<ScheduleList> scheduleList;
 
-  ScheduleList({this.statusCode, this.message, this.scheduleList});
+  SchedulesModel({this.statusCode, this.message, this.scheduleList});
 
-  ScheduleList.fromJson(Map<String, dynamic> json) {
+  SchedulesModel.fromJson(Map<String, dynamic> json) {
     statusCode = json['status_code'];
     message = json['message'];
     if (json['schedule_list'] != null) {

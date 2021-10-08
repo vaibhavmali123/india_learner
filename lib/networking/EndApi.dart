@@ -25,4 +25,6 @@ class EndApi {
   static String plusCourses = 'plus_course.php';
   static String batch = 'batch.php';
   static String sessionListHome = 'session_list_live_new.php';
+
+  static String plusSession = 'plus_sessions.php';
 }
