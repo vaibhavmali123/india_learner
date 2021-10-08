@@ -7,13 +7,21 @@ import 'package:india_learner/utils/Utils.dart';
 import 'package:india_learner/views/VideoPlayerWidget.dart';
 
 class PlusCoursesSession extends StatefulWidget {
-  PlusCoursesSessionState createState() => PlusCoursesSessionState();
+  var courseId;
+
+  PlusCoursesSession({this.courseId});
+
+  PlusCoursesSessionState createState() => PlusCoursesSessionState(courseId: courseId);
 }
 
 class PlusCoursesSessionState extends State<PlusCoursesSession> {
+  var courseId;
+
+  PlusCoursesSessionState({this.courseId});
+
   @override
   Widget build(BuildContext context) {
-    plusSessionBloc.fetchPlusSessions("3");
+    plusSessionBloc.fetchPlusSessions(courseId: courseId);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -63,17 +71,14 @@ class PlusCoursesSessionState extends State<PlusCoursesSession> {
                                         //color: Colors.white,
                                         child: Row(children: [
                                           Expanded(
-                                              flex: 3,
+                                              flex: 2,
                                               child: ClipRRect(
                                                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                                                child: snapshot.data.plusSessionLiveList[index].image == null || snapshot.data.plusSessionLiveList[index].image == ''
-                                                    ? Image.asset(
-                                                        'assets/images/teachers.jpg',
-                                                        height: 70,
-                                                        scale: 1.0,
-                                                        width: 70,
-                                                      )
-                                                    : Image.network(snapshot.data.plusSessionLiveList[index].image),
+                                                child: Icon(
+                                                  snapshot.data.plusSessionLiveList[index].type == 'zoom' ? Icons.live_tv_rounded : Icons.video_call_sharp,
+                                                  size: 40,
+                                                  color: Colors.cyan,
+                                                ),
                                               )),
                                           Expanded(
                                               flex: 5,
@@ -113,7 +118,7 @@ class PlusCoursesSessionState extends State<PlusCoursesSession> {
                                                       height: 6,
                                                     ),
                                                     Text.rich(TextSpan(
-                                                        text: 'Fees: ',
+                                                        text: 'Type: ',
                                                         style: TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: Colors.black87),
                                                         children: <InlineSpan>[TextSpan(text: snapshot.data.plusSessionLiveList[index].type, style: TextStyle(fontSize: 12, color: Colors.black87.withOpacity(0.5), fontWeight: FontWeight.w800))]))
                                                   ],

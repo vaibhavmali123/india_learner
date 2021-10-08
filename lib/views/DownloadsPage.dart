@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:get/get.dart';
@@ -66,6 +67,7 @@ class DownloadsPageState extends State<DownloadsPage> {
     theme = MediaQuery.of(context).platformBrightness == Brightness.dark ? Constants.darkTheme : Constants.lightTheme;
     videoDownloadBloc.getDownloads();
     return Scaffold(
+      backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
         backgroundColor: theme == Constants.lightTheme ? Colors.white : color.darkAppBar,
         automaticallyImplyLeading: false,
@@ -97,96 +99,81 @@ class DownloadsPageState extends State<DownloadsPage> {
                               Get.to(VideoPlayerLocal(list[index]['file'], list[index]['title']));
                             },
                             child: Padding(
-                                padding: EdgeInsets.only(top: 22),
+                                padding: EdgeInsets.only(top: 8, bottom: 6),
                                 child: Container(
+                                    width: Get.size.width / 1.1,
+                                    color: Colors.white,
                                     child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                            margin: EdgeInsets.only(top: 10, left: 14),
-                                            height: 65,
-                                            width: 80,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(8.0),
-                                              color: Colors.cyan.withOpacity(0.3),
-                                            ),
-                                            child: Center(child: Image.asset('assets/images/download.jpg')))
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      width: 18,
-                                    ),
-                                    Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Row(
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
                                           children: [
                                             Container(
-                                              width: 56,
-                                              margin: EdgeInsets.only(
-                                                top: 8,
-                                              ),
-                                              height: 18,
-                                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(0.0), border: Border.all(width: 0.4, color: Colors.black26), color: Colors.grey.withOpacity(0.2)),
-                                              child: Padding(
-                                                padding: EdgeInsets.only(bottom: 0),
-                                                child: Center(
-                                                  child: Text(
-                                                    index / 2 == 0 ? "ENGLISH" : 'HINDI',
-                                                    style: TextStyle(fontSize: 12, color: theme == Constants.lightTheme ? color.lightText : color.darkText, fontWeight: FontWeight.w700),
-                                                  ),
+                                                margin: EdgeInsets.only(top: 10, left: 14),
+                                                height: 70,
+                                                width: 80,
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(8.0),
+                                                  color: Colors.cyan.withOpacity(0.3),
                                                 ),
+                                                child: Center(child: Image.asset('assets/images/download.jpg')))
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          width: 18,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Text(
+                                                  list[index]['title'],
+                                                  style: TextStyle(fontSize: 15, height: 2, color: Colors.cyan, fontWeight: FontWeight.w700),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 2,
+                                            ),
+                                            Container(
+                                              width: MediaQuery.of(context).size.width / 2,
+                                              child: Text(
+                                                'Description here',
+                                                style: TextStyle(fontSize: 14, height: 1.4, color: theme == Constants.lightTheme ? color.lightText : color.darkText, fontWeight: FontWeight.w700),
                                               ),
                                             ),
                                             SizedBox(
-                                              width: 10,
+                                              height: 6,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  'Lesson name here',
+                                                  style: TextStyle(fontSize: 14, height: 1.2, color: theme == Constants.lightTheme ? color.lightText : color.darkText, fontWeight: FontWeight.w600),
+                                                ),
+                                                Text(
+                                                  '10:00 PM to 12:30 PM',
+                                                  style: TextStyle(fontSize: 14, color: theme == Constants.lightTheme ? color.lightText : color.darkText, fontWeight: FontWeight.w400),
+                                                ),
+                                              ],
                                             ),
                                             Text(
-                                              list[index]['title'],
-                                              style: TextStyle(fontSize: 15, height: 2, color: Colors.cyan, fontWeight: FontWeight.w700),
+                                              'Teacher name here',
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                height: 1.2,
+                                                color: theme == Constants.lightTheme ? color.lightText : color.darkText,
+                                              ),
                                             ),
                                           ],
-                                        ),
-                                        SizedBox(
-                                          height: 2,
-                                        ),
-                                        Container(
-                                          width: MediaQuery.of(context).size.width / 2,
-                                          child: Text(
-                                            'Description here',
-                                            style: TextStyle(fontSize: 14, height: 1.4, color: theme == Constants.lightTheme ? color.lightText : color.darkText, fontWeight: FontWeight.w700),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 6,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              'Lesson name here',
-                                              style: TextStyle(fontSize: 14, height: 1.2, color: theme == Constants.lightTheme ? color.lightText : color.darkText, fontWeight: FontWeight.w600),
-                                            ),
-                                            Text(
-                                              '10:00 PM to 12:30 PM',
-                                              style: TextStyle(fontSize: 14, color: theme == Constants.lightTheme ? color.lightText : color.darkText, fontWeight: FontWeight.w400),
-                                            ),
-                                          ],
-                                        ),
-                                        Text(
-                                          'Teacher name here',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            height: 1.2,
-                                            color: theme == Constants.lightTheme ? color.lightText : color.darkText,
-                                          ),
                                         ),
                                       ],
-                                    ),
-                                  ],
-                                ))));
+                                    ))));
                       })
                   : Container(
                       child: Center(

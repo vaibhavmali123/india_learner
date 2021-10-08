@@ -268,9 +268,9 @@ class Repository {
     });
   }
 
-  static Future<PlusSessionModel> getPlusSessions() {
+  static Future<PlusSessionModel> getPlusSessions({String courseId}) {
     var request = {"course_id": "3"};
-    return ApiHandler.postApi(baseUrl: ApiProvider.baseUrl, endApi: EndApi.plusSession,map:request).then((value) {
+    return ApiHandler.postApi(baseUrl: ApiProvider.baseUrl, endApi: EndApi.plusSession, map: request).then((value) {
       PlusSessionModel plusSessionModel = PlusSessionModel.fromJson(value);
 
       return plusSessionModel;

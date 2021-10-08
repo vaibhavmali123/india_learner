@@ -56,6 +56,14 @@ class VideoPlayerLocalState extends State<VideoPlayerLocal> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    controller.dispose();
+    chewieController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     theme = MediaQuery.of(context).platformBrightness == Brightness.dark ? Constants.darkTheme : Constants.lightTheme;
 

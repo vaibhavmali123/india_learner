@@ -7,8 +7,8 @@ class PlusSessionsBloc {
 
   Stream<PlusSessionModel> get plusSessionStream => plusSessionFetcher.stream;
 
-  fetchPlusSessions(String courseId) async {
-    PlusSessionModel plusSessionModel = await Repository.getPlusSessions();
+  fetchPlusSessions({String courseId}) async {
+    PlusSessionModel plusSessionModel = await Repository.getPlusSessions(courseId: courseId);
 
     plusSessionFetcher.sink.add(plusSessionModel);
   }

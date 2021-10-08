@@ -85,7 +85,7 @@ class TeachersDetailsState extends State<TeachersDetails> {
             Expanded(
               //height:Get.size.height/1.4,
               child: Column(
-                children: [Expanded(flex: 1, child: getOngoingBatchesList()), Expanded(flex: 1, child: getOnGoingCoursesList()), Expanded(flex: 1, child: getUpcomingCourses()), Expanded(flex: 1, child: getCompletedCourses())],
+                children: [/*Expanded(flex: 1, child: getOngoingBatchesList()),*/ Expanded(flex: 1, child: getOnGoingCoursesList()), Expanded(flex: 1, child: getUpcomingCourses()), Expanded(flex: 1, child: getCompletedCourses())],
               ),
             )
           ],
@@ -206,7 +206,7 @@ class TeachersDetailsState extends State<TeachersDetails> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(padding: EdgeInsets.only(left: 15, top: 20), child: Text('Courses ongoing', style: TextStyle(fontSize: 16, color: theme == Constants.lightTheme ? Colors.black : Colors.white, fontWeight: FontWeight.w800))),
+          Padding(padding: EdgeInsets.only(left: 15, top: 20), child: Text('- Courses ongoing', style: TextStyle(fontSize: 16, color: theme == Constants.lightTheme ? Colors.black : Colors.white, fontWeight: FontWeight.w800))),
           SizedBox(
             height: 10,
           ),
@@ -273,7 +273,7 @@ class TeachersDetailsState extends State<TeachersDetails> {
                                                     SizedBox(
                                                       height: 8,
                                                     ),
-                                                    Expanded(flex: 1, child: Text(listCourse[index].courseName, style: TextStyle(fontSize: 16, color: theme == Constants.lightTheme ? Colors.black : Colors.white, fontWeight: FontWeight.w500)))
+                                                    Expanded(flex: 1, child: Text(listCourse[index].courseName, style: TextStyle(fontSize: 14, color: theme == Constants.lightTheme ? Colors.black : Colors.white, fontWeight: FontWeight.w500)))
                                                   ],
                                                 ),
                                               ),
@@ -372,7 +372,7 @@ class TeachersDetailsState extends State<TeachersDetails> {
                                                       SizedBox(
                                                         height: 8,
                                                       ),
-                                                      Expanded(flex: 1, child: Text(listCourse[index].courseName, style: TextStyle(fontSize: 16, color: theme == Constants.lightTheme ? Colors.black : Colors.white, fontWeight: FontWeight.w500)))
+                                                      Expanded(flex: 1, child: Text(listCourse[index].courseName, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 14, color: theme == Constants.lightTheme ? Colors.black : Colors.white, fontWeight: FontWeight.w500)))
                                                     ],
                                                   ),
                                                 ),
@@ -463,7 +463,7 @@ class TeachersDetailsState extends State<TeachersDetails> {
                                                     SizedBox(
                                                       height: 8,
                                                     ),
-                                                    Expanded(flex: 1, child: Text(listCourse[index].courseName, style: TextStyle(fontSize: 16, color: theme == Constants.lightTheme ? Colors.black : Colors.white, fontWeight: FontWeight.w500)))
+                                                    Expanded(flex: 1, child: Text(listCourse[index].courseName, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 14, color: theme == Constants.lightTheme ? Colors.black : Colors.white, fontWeight: FontWeight.w500)))
                                                   ],
                                                 ),
                                               ),

@@ -23,6 +23,7 @@ class PlusCoursesScreenState extends State<PlusCoursesScreen> {
     courseBloc.featchAllCourses();
 
     return Scaffold(
+      backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
@@ -149,80 +150,77 @@ class PlusCoursesScreenState extends State<PlusCoursesScreen> {
                               }
                               return GestureDetector(
                                 onTap: () async {
-                                  Get.to(PlusCoursesSession());
+                                  Get.to(PlusCoursesSession(courseId: listCourse[index].courseId));
                                   // Get.to(CourseListWidget());
                                 },
                                 child: listCourse[index].isFree == '2'
                                     ? Container(
+                                        color: Colors.white,
                                         child: Column(
                                           children: [
-                                            GestureDetector(
-                                              child: Container(
-                                                height: 80,
-                                                //
-                                                //color: Colors.white,
-                                                child: Row(children: [
-                                                  Expanded(
-                                                      flex: 3,
-                                                      child: ClipRRect(
-                                                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                                                        child: listCourse[index].file == null || listCourse[index].file == ''
-                                                            ? Image.asset(
-                                                                'assets/images/teachers.jpg',
-                                                                height: 70,
-                                                                scale: 1.0,
-                                                                width: 70,
-                                                              )
-                                                            : Image.network(listCourse[index].file),
-                                                      )),
-                                                  Expanded(
-                                                      flex: 5,
-                                                      child: Padding(
-                                                        padding: EdgeInsets.only(left: 12),
-                                                        child: Column(
-                                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children: [
-                                                            Text(
-                                                              listCourse[index].courseName,
-                                                              style: TextStyle(fontSize: 14, height: 1.3, color: Colors.black, fontWeight: FontWeight.w600),
-                                                            ),
-                                                            SizedBox(
-                                                              height: 6,
-                                                            ),
-                                                            Text.rich(TextSpan(
-                                                                text: 'Duration:  ',
-                                                                style: TextStyle(
-                                                                  fontSize: 13,
-                                                                  color: Colors.black87,
-                                                                  fontWeight: FontWeight.bold,
-                                                                ),
-                                                                children: <InlineSpan>[
-                                                                  TextSpan(
-                                                                    text: listCourse[index].startDate + ' To ' + listCourse[index].endDate,
-                                                                    style: TextStyle(
-                                                                      fontSize: 11,
-                                                                      color: Colors.black.withOpacity(0.6),
-                                                                      fontWeight: FontWeight.bold,
-                                                                    ),
-                                                                  )
-                                                                ])),
-                                                            SizedBox(
-                                                              height: 6,
-                                                            ),
-                                                            Text.rich(TextSpan(
-                                                                text: 'Fees: ',
-                                                                style: TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: Colors.black87),
-                                                                children: <InlineSpan>[TextSpan(text: listCourse[index].courseFee, style: TextStyle(fontSize: 12, color: Colors.black87.withOpacity(0.5), fontWeight: FontWeight.w800))]))
-                                                          ],
-                                                        ),
-                                                      )),
-                                                  Expanded(
-                                                    flex: 1,
-                                                    child: Container(),
-                                                  )
-                                                ]),
-                                              ),
+                                            Container(
+                                              height: 80,
+                                              child: Row(children: [
+                                                Expanded(
+                                                    flex: 3,
+                                                    child: ClipRRect(
+                                                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                      child: listCourse[index].file == null || listCourse[index].file == ''
+                                                          ? Image.asset(
+                                                              'assets/images/teachers.jpg',
+                                                              height: 70,
+                                                              scale: 1.0,
+                                                              width: 70,
+                                                            )
+                                                          : Image.network(listCourse[index].file),
+                                                    )),
+                                                Expanded(
+                                                    flex: 5,
+                                                    child: Padding(
+                                                      padding: EdgeInsets.only(left: 12),
+                                                      child: Column(
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                        children: [
+                                                          Text(
+                                                            listCourse[index].courseName,
+                                                            style: TextStyle(fontSize: 14, height: 1.3, color: Colors.black, fontWeight: FontWeight.w600),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 6,
+                                                          ),
+                                                          Text.rich(TextSpan(
+                                                              text: 'Duration:  ',
+                                                              style: TextStyle(
+                                                                fontSize: 13,
+                                                                color: Colors.black87,
+                                                                fontWeight: FontWeight.bold,
+                                                              ),
+                                                              children: <InlineSpan>[
+                                                                TextSpan(
+                                                                  text: listCourse[index].startDate + ' To ' + listCourse[index].endDate,
+                                                                  style: TextStyle(
+                                                                    fontSize: 11,
+                                                                    color: Colors.black.withOpacity(0.6),
+                                                                    fontWeight: FontWeight.bold,
+                                                                  ),
+                                                                )
+                                                              ])),
+                                                          SizedBox(
+                                                            height: 6,
+                                                          ),
+                                                          Text.rich(TextSpan(
+                                                              text: 'Fees: ',
+                                                              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: Colors.black87),
+                                                              children: <InlineSpan>[TextSpan(text: listCourse[index].courseFee, style: TextStyle(fontSize: 12, color: Colors.black87.withOpacity(0.5), fontWeight: FontWeight.w800))]))
+                                                        ],
+                                                      ),
+                                                    )),
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: Container(),
+                                                )
+                                              ]),
                                             ),
                                             Container(
                                               height: 1,

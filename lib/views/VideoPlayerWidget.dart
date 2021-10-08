@@ -69,6 +69,14 @@ class VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _controller.dispose();
+    chewieController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     theme = MediaQuery.of(context).platformBrightness == Brightness.dark ? Constants.darkTheme : Constants.lightTheme;
 
@@ -86,7 +94,7 @@ class VideoPlayerWidgetState extends State<VideoPlayerWidget> {
           },
         ),
         actions: <Widget>[
-          PopupMenuButton<String>(
+          /*PopupMenuButton<String>(
             icon: Icon(
               Icons.download_outlined,
               color: Colors.black87,
@@ -103,7 +111,7 @@ class VideoPlayerWidgetState extends State<VideoPlayerWidget> {
           ),
           SizedBox(
             width: 24,
-          )
+          )*/
         ],
         title: Text(title, style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600)),
       ),
